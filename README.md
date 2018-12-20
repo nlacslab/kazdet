@@ -1,5 +1,14 @@
-# kazdet
-NLA-NU Kazakh Dependency Treebank
+# kazdet: NLA-NU Kazakh Dependency Treebank
+
+This repository hosts a [Kazakh](https://en.wikipedia.org/wiki/Kazakh_language) [Dependency Treebank](https://en.wikipedia.org/wiki/Treebank) built at the National Laboratory Astana, Nazarbayev University.
+
+
+As of December 2018, the treebank contains ~61K sentences and ~934.7K tokens overall and 894.3K alphanumeric.
+The treebank is unnotated for lemma, part-of-speech, morphology, and dependency relations following (to the extent currently possible) the [Universal Dependency 2](http://universaldependencies.org/) guidelines and is stored in the UD-native
+[CoNLL-U format](http://universaldependencies.org/format.html).
+
+The project is implemented by the computer science lab of the National Laboratory Astana, Nazarbayev University.
+
 
 ```
 # sent_id = 7 @ ../data_brat/_zhasalash/_zha_0281_87.ann
