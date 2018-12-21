@@ -85,11 +85,12 @@ Unfortunately, the web-server that we used is no longer running, hence we cannot
 Below is a screen shot of the configured BRAT instance in use:
 ![BRAT annotation tool](https://github.com/nlacslab/kazdet/blob/master/misc/brat_pic.png)
 
-#### 2.2 The basic parsing pipeline
+#### 2.2 Parsing pipeline v1
 
-To run the tool the web-server was 
+The first version of the basic parsing pipeline consisted of a combination of our implementation of a tokenizer -> tagger pipeline and the state-of-the-art dependency parser at the moment, the [maltparser](http://www.maltparser.org).
+This version of the parsing pipeline was used in 2016 and 2017 for a semi-automatic annotation and building of the treebank.
 
-Below we list the basic 
+To use this pipeline, first download the latest release of the maltparser from http://maltparser.org/dist/maltparser-1.9.2.zip.
 
 
 According to the initial project proposal, it was planned to develop an annotation tool and a basic dependency parsing pipeline consisting of a tokenizer, a tagger, and a parser.
