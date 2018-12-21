@@ -72,7 +72,7 @@ To extract the treebank on a Linux system, `cd` to the data directory and extrac
 
 ### 2 Tools
 
-What follows is a chronologically orgonized (according to the project implementation schedule) list of usage examples (when applicable) of the tools developped for the project.
+What follows is a chronologically orgonized (according to the project implementation schedule) list of usage examples (when applicable) of the tools developped for the project. To use provided Python scripts make sure that your Python version is 3.6 or higher. Currently all of the usage examples are made for Linux systems, Windows tutorial can be made upon request.
 
 __2016__
 
@@ -90,8 +90,52 @@ Below is a screen shot of the configured BRAT instance in use:
 The first version of the basic parsing pipeline consisted of a combination of our implementation of a tokenizer -> tagger pipeline and the state-of-the-art dependency parser at the moment, the [maltparser](http://www.maltparser.org).
 This version of the parsing pipeline was used in 2016 and 2017 for a semi-automatic annotation and building of the treebank.
 
-To use this pipeline, first download the latest release of the maltparser from http://maltparser.org/dist/maltparser-1.9.2.zip.
+The first step in using this pipeline is to tokenize and tag the input, using the `tagpipe.py` midule which is located in the tools directory, i.e. `kazdet/tools`. The module has the following command line options and usage:
+```shell
+~/kazdet/tools > python tagpipe.py -h
+usage: tagpipe.py [-h] [-i INPUT] [-o OUTPUT] [-m MODEL_DIR] [-f FORMAT]
 
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INPUT, --input INPUT
+                        input file name
+  -o OUTPUT, --output OUTPUT
+                        output file name
+  -m MODELDIR, --modeldir MODELDIR
+                        model directory (default: model.mor)
+  -f FORMAT, --format FORMAT
+                        output format: 0 - plain (default); 1 - conllu; 2 -
+                        conllx; [anything else] - plain.
+```
+Thus, to tokenize and tag an input file `in.txt` (we might need to create it beforehand) and save it to the file `in.toktag.txt` in a conllx format (as it used by the maltparser), we need to run the following commands:
+```shell
+~/kazdet/tools > echo 'Еңбек етсең ерінбей, тояды қарның тіленбей.' > in.txt
+~/kazdet/tools > python tagpipe.py -i in.txt -o in.toktag.txt -f 2
+```
+... and to check the output:
+```
+cat in.toktag.txt 
+
+1	Еңбек	еңбек	NOUN	NOUN	_	_	_	0	0
+2	етсең	ет	VERB	VERB	vbMood=Cond|Person=2	_	_	0	0
+3	ерінбей	ерін	VERB	VERB	vbNeg=True|vbType=Cvb	_	_	0	0
+4	,	,	PUNCT	PUNCT	_	_	_	0	0
+5	тояды	то	VERB	VERB	vbTense=Aor|Person=3	_	_	0	0
+6	қарның	қарн	NOUN	NOUN	Poss=2	_	_	0	0
+7	тіленбей	тіле	VERB	VERB	vbVcRefx=True|vbNeg=True|vbType=Cvb	_	_	0	0
+8	.	.	PUNCT	PUNCT	_	_	_	0	0
+
+```
+
+
+
+Thus to to tokenize
+
+To use this pipeline, first download the latest release of the maltparser from http://maltparser.org/dist/maltparser-1.9.2.zip
+and `unzip` (this instruction uses the tools directory of the repo, i.e. `kazdet/tools`, for conveniene):
+```shell
+~/kazdet/tools > unzip maltparser-1.9.2.zip
+```
 
 According to the initial project proposal, it was planned to develop an annotation tool and a basic dependency parsing pipeline consisting of a tokenizer, a tagger, and a parser.
 As funding was extended to co
