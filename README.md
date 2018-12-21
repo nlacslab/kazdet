@@ -29,8 +29,18 @@ models for Kazakh are provided, and a translation prototype has been made availa
 The treebank and our own Python-based implementations of the NLP tools are released under the 
 [CC-SA-BY](https://creativecommons.org/licenses/by-sa/4.0/) license that permits any use, 
 provided that the source is attributed (cited) and the content is not changed if shared (share alike).
+
 Important! Pre-trained models for third-party software are _not_ released under CC-SA-BY.
 These models assume whatever license corresponding third-party software is distributed under.
+
+<hr>
+
+Citation info: if you are using the treebank or the tools in your research or elsewhere, please cite the following work:
+`
+Makazhanov, A., Sultangazina, A., Makhambetov, O. and Yessenbayev, Z., 2015. Syntactic annotation of Kazakh: Following the universal dependencies guidelines. A report. In proceedings of the 3rd International Conference on Turkic Languages Processing (TurkLang 2015), Kazan, Tatarstan (pp. 338-350).
+`
+
+<hr>
 
 Contact info: figure out or run the following code (need python 3.6+ or [online interpreter](https://www.python.org/shell/))
 ```python
@@ -43,14 +53,7 @@ print(f'\n{frst_name.lower()}{sep1}{last_name.lower()}{sep2}nu{sep1}edu{sep1}kz\
 <hr>
 
 
-## Contents
-[1. The treebank](#ch1)<br>
-[2.1 Example usage](#ch21)<br>
-[2.2 Citing](#ch22)<br>
-
-
-
-basic parsing pipeline 
+ 
 
 http://www.maltparser.org/download.html
 
