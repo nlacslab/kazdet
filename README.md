@@ -30,8 +30,8 @@ The treebank and our own Python-based implementations of the NLP tools are relea
 [CC-SA-BY](https://creativecommons.org/licenses/by-sa/4.0/) license that permits any use, 
 provided that the source is attributed (cited) and the content is not changed if shared (share alike).
 
-Important! Pre-trained models for third-party software are _not_ released under CC-SA-BY.
-These models assume whatever license corresponding third-party software is distributed under.
+__Important! Pre-trained models for third-party software are _not_ released under CC-SA-BY.
+These models assume whatever license corresponding third-party software is distributed under.__
 
 <hr>
 
@@ -52,8 +52,50 @@ print(f'\n{frst_name.lower()}{sep1}{last_name.lower()}{sep2}nu{sep1}edu{sep1}kz\
 
 <hr>
 
+### 1 Download
 
- 
+To download the treebank and all the tools and models just clone this repository like so:
+```shell
+> git clone https://github.com/nlacslab/kazdet.git
+```
+or download the archived version from https://github.com/nlacslab/kazdet/archive/master.zip.
+
+The treebank is located inside the `data` directory and is compressed with 7zip archivator.
+
+To extract the treebank on a Linux system, `cd` to the data directory and extract the contents of the archive like so:
+```shell
+~/kazdet/ > cd data
+~/kazdet/data > 7z x kdt-NLANU-0.01.connlu.txt.7z
+```
+
+<hr>
+
+### 2 Tools
+
+What follows is a chronologically orgonized (according to the project implementation schedule) list of usage examples (when applicable) of the tools developped for the project.
+
+__2016__
+
+#### 2.1 The annotation tool
+For this purpose a third-party tool [BRAT](http://brat.nlplab.org/) due to its support of multi-user and online annotation modes. 
+The tool comes with its own web-server which was configured and run.
+The tool must be configured depending on the annotation task at hand.
+The configuration files that were used in our project can be found in the `brat-config.zip` archive in the `misc` directory of the present repo.
+Unfortunately, the web-server that we used is no longer running, hence we cannot link to it.
+Below is a screen shot of the configured BRAT instance in use:
+![BRAT annotation tool](https://github.com/nlacslab/kazdet/blob/master/misc/brat_pic.png)
+
+#### 2.2 The basic parsing pipeline
+
+To run the tool the web-server was 
+
+Below we list the basic 
+
+
+According to the initial project proposal, it was planned to develop an annotation tool and a basic dependency parsing pipeline consisting of a tokenizer, a tagger, and a parser.
+As funding was extended to co
+
+
 
 http://www.maltparser.org/download.html
 
@@ -62,6 +104,6 @@ http://www.maltparser.org/download.html
 java -jar maltparser-1.9.2.jar -c test -i examples/data/talbanken05_test.conll -o out.conll -m parse
 ```
 
-![BRAT annotation tool](https://github.com/nlacslab/kazdet/blob/master/misc/brat_pic.png)
+
  
 
