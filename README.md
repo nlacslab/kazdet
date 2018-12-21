@@ -62,6 +62,6 @@ http://www.maltparser.org/download.html
 java -jar maltparser-1.9.2.jar -c test -i examples/data/talbanken05_test.conll -o out.conll -m parse
 ```
 
-![BRAT annotation tool](https://github.com/nlacslab/kazdet/misc/bratpic.png)
+![BRAT annotation tool](https://github.com/nlacslab/kazdet/misc/brat_pic.png)
  
 
