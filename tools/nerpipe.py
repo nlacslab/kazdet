@@ -8,13 +8,15 @@ import utils
 
 def parse_cl():
     cla_parser = argparse.ArgumentParser()
-    cla_parser.add_argument('-i', help='input file name')
-    cla_parser.add_argument('-o', help='output file name')
-    cla_parser.add_argument('-M', action='store',
-                            default='model.ner', help='NER model')
-    cla_parser.add_argument('-m', action='store',
-                            default='model.mor', help='model directory')
-                            help='morphological processing model directory')
+    cla_parser.add_argument('-i', '--input', help='input file name')
+    cla_parser.add_argument('-o', '--output', help='output file name')
+    cla_parser.add_argument('-M', '--modelner', action='store',
+                            default='model.ner',
+                            help='NER model (default is model.ner)')
+    cla_parser.add_argument('-m', '--modelmor', action='store',
+                            default='model.mor',
+                            help='morphological processing \
+                            model directory (default is model.mor)')
     return cla_parser.parse_args()
 
 
@@ -24,22 +26,22 @@ def main():
     args = parse_cl()
 
     # create a naive bayes classifier instance
-    model = utils.NB(args.M)
+    model = utils.NB(args.modelner)
 
     # create a morphological analyzer instance
     analyzer = utils.AnalyzerDD()
-    analyzer.load_model(args.m)
+    analyzer.load_model(args.modelmor)
 
     # create a morphological tagger instance
     tagger = utils.TaggerHMM(lyzer=analyzer)
-    tagger.load_model(args.m)
+    tagger.load_model(args.modelmor)
 
     # create a tokenizer instance
     tokenizer = utils.TokenizeRex()
 
     # get the input and prepare the output
-    txt = codecs.open(args.i, 'r', 'utf-8').read().strip()
-    fd = codecs.open(args.o, 'w', 'utf-8')
+    txt = codecs.open(args.input, 'r', 'utf-8').read().strip()
+    fd = codecs.open(args.output, 'w', 'utf-8')
 
     # tokenize and extract named entities
     for sentence in tokenizer.tokenize(txt):
