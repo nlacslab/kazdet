@@ -35,10 +35,11 @@ These models assume whatever license corresponding third-party software is distr
 
 <hr>
 
-Citation info: if you are using the treebank or the tools in your research or elsewhere, please cite the following work:
+If you are using the treebank in your research or elsewhere, please cite the following work:
 `
 Makazhanov, A., Sultangazina, A., Makhambetov, O. and Yessenbayev, Z., 2015. Syntactic annotation of Kazakh: Following the universal dependencies guidelines. A report. In proceedings of the 3rd International Conference on Turkic Languages Processing (TurkLang 2015), Kazan, Tatarstan (pp. 338-350).
 `
+Citation info on the tools will be given further along whenever relevant.
 
 <hr>
 
@@ -80,7 +81,8 @@ __=== 2016 ===__
 For this purpose a third-party tool [BRAT](http://brat.nlplab.org/) due to its support of multi-user and online annotation modes. 
 The tool comes with its own web-server which was configured and run.
 The tool must be configured depending on the annotation task at hand.
-The configuration files that were used in our project can be found in the `brat-config.zip` archive in the `misc` directory of the present repo.
+The configuration files that were used in our project can be found in the `brat-config.zip` archive in the `misc` directory of the present repo. Please, cite [\[1\]](#ref01), if you use these configuration files.
+
 Unfortunately, the web-server that we used is no longer running, hence we cannot link to it.
 Below is a screen shot of the configured BRAT instance in use:
 ![BRAT annotation tool](https://github.com/nlacslab/kazdet/blob/master/misc/brat_pic.png)
@@ -124,8 +126,9 @@ Thus, to tokenize and tag an input file `in.txt` (we might need to create it bef
 6	қарның	қарн	NOUN	NOUN	Poss=2	_	_	0	0
 7	тіленбей	тіле	VERB	VERB	vbVcRefx=True|vbNeg=True|vbType=Cvb	_	_	0	0
 8	.	.	PUNCT	PUNCT	_	_	_	0	0
-
 ```
+\* _the morphological processing tools (analyzer and parser) constitute re-implementation of our earlier work, see [1] for example._
+
 The next step in the pipeline is that this tokenized and tagged sentence needs to be parsed.
 To this end we need to download maltparser, which is distributed as a java binary code and needs no compilation.
 
@@ -158,16 +161,39 @@ __=== 2017 ===__
 
 #### 2.3 Parsing pipeline v2
 
-This pipeline is basede on another third-party tool, [udpipe](http://ufal.mff.cuni.cz/udpipe), and covers two objectives of the 2017 implementation schedule, i.e. developing neural-based morphological tagger and parser.
+This pipeline is based on another third-party tool, [udpipe](http://ufal.mff.cuni.cz/udpipe), and covers two objectives of the 2017 implementation schedule, i.e. developing neural-based morphological tagger and parser.
 
-Let's start by downloading precompiled `udpipe` binaries from https://github.com/ufal/udpipe/releases/download/v1.2.0/udpipe-1.2.0-bin.zip.
+To use this pipeline, first, download precompiled `udpipe` binaries from https://github.com/ufal/udpipe/releases/download/v1.2.0/udpipe-1.2.0-bin.zip and extract its contents to the `tools` directory.
+
+In this case we need to explicitly state the pipeline steps through the arguments to the tool, followed by the indication of the model and input files:
+```shell
+~/kazdet/tools >  ./udpipe-1.2.0-bin/bin-linux64/udpipe --tokenize --tag --parse ../models/udpipe_kdt_001.mdl in.txt 
+Loading UDPipe model: done.
+# newdoc id = in.txt
+# newpar
+# sent_id = 1
+# text = Еңбек етсең ерінбей, тояды қарның тіленбей.
+1	Еңбек	Еңбек	PROPN	_	_	3	nsubj	_	_
+2	етсең	етсең	ADV	_	_	3	advmod	_	_
+3	ерінбей	ерін	VERB	_	vbNeg=True|vbType=Adv	7	advcl	_	SpaceAfter=No
+4	,	,	PUNCT	_	_	7	punct	_	_
+5	тояды	тояды	ADJ	_	_	6	amod	_	_
+6	қарның	қар	NOUN	_	Case=Gen	7	nsubj	_	_
+7	тіленбей	тілен	VERB	_	vbNeg=True|vbType=Adv	0	root	_	SpaceAfter=No
+8	.	.	PUNCT	_	_	7	punct	_	SpacesAfter=\n
+```
+
+#### 2.4 Machine translation prototype
+
+We have experimented with both statistical and neural machine translation systems, as well as linguistically motivated factored and rule-based models. This involved considerable amount of work and has resulted in a 
+We have built a machine translation system prototype to translate 
+
+The machine t
 
 
+### References
 
-
-
-
-
+<a name="ref01"></a> 1. Makazhanov, A., Sultangazina, A., Makhambetov, O. and Yessenbayev, Z., 2015. Syntactic annotation of Kazakh: Following the universal dependencies guidelines. A report. In proceedings of the 3rd International Conference on Turkic Languages Processing (TurkLang 2015), Kazan, Tatarstan (pp. 338-350).
 
 
 
