@@ -186,9 +186,15 @@ Loading UDPipe model: done.
 #### 2.4 Machine translation prototype
 
 We have experimented with both statistical and neural machine translation systems, as well as linguistically motivated factored and rule-based models. This involved considerable amount of work and has resulted in a number of publications, e.g. [\[3\]](#ref02), [\[4\]](#ref02), and [\[5\]](#ref02).
-We have built a machine translation system prototype to translate 
 
-The machine t
+Based on the superior accuracy and speed the prototype of statistical MT was built using [Moses SMT tool](http://www.statmt.org/moses/). It is not released here, due to relative complexity of both usage and documenting, but it is available as a web-server [here](http://kazcorpus.kz/translator/).
+
+
+__=== 2018 ===__
+
+#### 2.5 Joint tagging and parsing model
+
+This pipeline is based on another third-party tool, [udpipe](http://ufal.mff.cuni.cz/udpipe), and covers two objectives of the 2017 implementation schedule, i.e. developing neural-based morphological tagger and parser.
 
 
 ### References
