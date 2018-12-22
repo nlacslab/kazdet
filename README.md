@@ -260,11 +260,14 @@ The CONNL-U format might be informative and good for machine processing, but it 
 The `UDPipe` project mentioned earlier in this document not only provides an effective parsing pipeline framework, but also a convenient visualization tool, which can be accessed through their website at http://lindat.mff.cuni.cz/services/udpipe/.
 
 Let us try to visualize the sample sentence from the very beginning of this dcument. To do that we need to copy-paste it into the input text area of the UDPipe service landing page:
+
 ![UDPipe visualization example: part 1](https://github.com/nlacslab/kazdet/blob/master/misc/udpipe_vis01.png)
+
 We need to make sure that `UD 2.0` is checked as the `Model` and Kazakh UD treebank is chosen from the drop-down list.
 `Actions` check boxes must all be deselected and `CoNNL-U` is chosen as an input under the `Advanced options` panel.
 
 If we now hit the `Process input` button and select the `Show trees` tab, we get a nice visualization, where clicking on each node opens up a side panel with additional information:
+
 ![UDPipe visualization example: part 2](https://github.com/nlacslab/kazdet/blob/master/misc/udpipe_vis02.png)
 
 
@@ -275,12 +278,15 @@ To this end we can use a query language and search platform developed at Turku u
 
 Let us try to find sentences, where the word _қой_ is governed by any kind of relation.
 On a [landing page](http://bionlp-www.utu.fi/dep_search/) choose `Kazakh (UDv2.0)` from the top-left drop-down list and enter the query `қой < _` (any tree, where `қой` is governed by any relation) to the textbox to the right of that drop-down list.
-Now upon hitting `search` we should get two trees, with their parses visualized in a "flat-tree" format similar to that used in BRAT annotation tool (see seq. 2.1)
-![Query + visualization example](https://github.com/nlacslab/kazdet/blob/master/misc/turku_vis01.png)
+Now upon hitting `search` we should get two trees, with their parses visualized in a "flat-tree" format similar to that used in BRAT annotation tool (see seq. 2.1):
 
+![Query + visualization example: part 1](https://github.com/nlacslab/kazdet/blob/master/misc/turku_vis01.png)
 
-We need to make sure that `UD 2.0` is checked as the `Model` and Kazakh UD treebank is chosen from the drop-down list.
-`Actions` check boxes must all be deselected and `CoNNL-U` is chosen as an input under the `Advanced options` panel.
+If we look closer, there are two options at top-left corner of each tree: `context` and `connlu`.
+As the names suggest, the first one shows the sentence in context (if any), and the latter - produces already familiar CoNLL-U formatted text:
+
+![Query + visualization example: part 2](https://github.com/nlacslab/kazdet/blob/master/misc/turku_vis02.png)
+\* Important thing to understand here is that the tool queries the UD Kazakh treebank (~10K tokens), but not the current treebank.
 
 <hr>
 
