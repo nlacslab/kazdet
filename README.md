@@ -20,6 +20,8 @@ The treebank is annotated for lemma, part-of-speech, morphology, and dependency 
 9	байлаған	байла	VERB	VERB	vbTense=Pst	3	parataxis	_	SpaceAfter=No
 10	.	.	PUNCT	PUNCT	_	9	punct	_	_
 ```
+Here a parse of a sentence is represented by a tab-separated list of values for each token.
+There are 10 columns that encode the following values: (i) token id (ordinal number in a sentence); (ii) surface form of a token; (iii) lemma (dictionary form) of a token; (iv) universal part-of-speech tag; (v) alternative part-of-speech tag (identical to universal tag in our case); (vi) vertical bar-separated list of morphological features; (vii) id of the token that governs the current token (0 stands for a conventional root of the sentence); (viii) dependency relation between the dependee and the governor; (ix) enhanced dependencies (multi-headed representation); (x) any other annotation, in our case is used to indicate (for tokenization purposes) whether the next token follows the current one without a space.
 
 In addition to the treebank itself, the project delivers a number of language processing tools, such as a basic parsing pipeline
 (tokenization -> tagging -> parsing), a named entity recognizer and a prototype machine translation system.
@@ -68,7 +70,6 @@ To extract the treebank on a Linux system, `cd` to the data directory and extrac
 ~/kazdet/ > cd data
 ~/kazdet/data > 7z x kdt-NLANU-0.01.connlu.txt.7z
 ```
-
 <hr>
 
 ### 2 Tools
@@ -167,7 +168,7 @@ To use this pipeline, first, download precompiled `udpipe` binaries from https:/
 
 In this case we need to explicitly state the pipeline steps through the arguments to the tool, followed by the indication of the model and input files:
 ```shell
-~/kazdet/tools >  ./udpipe-1.2.0-bin/bin-linux64/udpipe --tokenize --tag --parse ../models/udpipe_kdt_001.mdl in.txt 
+~/kazdet/tools > ./udpipe-1.2.0-bin/bin-linux64/udpipe --tokenize --tag --parse ../models/udpipe_kdt_001.mdl in.txt 
 Loading UDPipe model: done.
 # newdoc id = in.txt
 # newpar
@@ -192,10 +193,71 @@ Based on the superior accuracy and speed the prototype of statistical MT was bui
 
 __=== 2018 ===__
 
-#### 2.5 Joint tagging and parsing model
+#### 2.5 Named entity recognizer
 
-This pipeline is based on another third-party tool, [udpipe](http://ufal.mff.cuni.cz/udpipe), and covers two objectives of the 2017 implementation schedule, i.e. developing neural-based morphological tagger and parser.
+This tool identifies named entities (personal names, toponyms, etc.) in a given text and classifies them into one of four categories: (i) PER - personal name; (ii) LOC - location (name of places); (iii) ORG - organization; (iv) OTH - any other named entity, e.g. pet name, book title etc.
 
+Our implementation is based on identification of proper nouns using our tokenizer-tagger pipeline (see sec. 2.2) and then classifying them into NE classes using local context features, such as lemma and POS, in a naive bayes setting.
+Here are the command line options for the NER tool:
+```shell
+~/kazdet/tools > python nerpipe.py -h
+usage: nerpipe.py [-h] [-i INPUT] [-o OUTPUT] [-M MODELNER] [-m MODELMOR]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INPUT, --input INPUT
+                        input file name
+  -o OUTPUT, --output OUTPUT
+                        output file name
+  -M MODELNER, --modelner MODELNER
+                        NER model (default is model.ner)
+  -m MODELMOR, --modelmor MODELMOR
+                        morphological processing model directory (default is
+                        model.mor)
+```
+
+Thus, to extract named entities from file `in.txt` (we may need to create one in advance) and record the output to `out.txt` run the following comands:
+```shell
+~/kazdet/tools > echo 'Ресей Президенті, Путин, ресми сапармен Қазақстанға келді.' > in.txt
+~/kazdet/tools > python nerpipe.py -i in.txt -o out.txt
+```
+... and to check the output:
+```
+~/kazdet/tools > cat out.txt 
+
+1	Ресей	LOC
+2	Президенті	PER
+3	,	_
+4	Путин	PER
+5	,	_
+6	ресми	_
+7	сапармен	_
+8	Қазақстанға	LOC
+9	келді	_
+10	.	_
+
+```
+
+#### 2.6 Language modeling for Kazakh
+
+This objective was included into 2018 implementation schedule mainly for the benefit of gaining expertise with deep neural language modeling techniques. 
+To this end, a two-layer LSTM was implemented in TensorFlow and tested on a range of hyperparameter settings, of which the model with 1500 units unrolled for 35 steps achieved the best performance (compared to the same neural architectures with different parameters and to a statistical ngram language models).
+
+About 887K, 67K, and 79K tokens where used for training, validation, and testing respectively. The performance, measured as perplexity on the test set (the lower the better) for trigram and LSTM models was 123.7 and 115.5 respectively. Later the LSTM model was retrained on a morpheme-like sub-word units to achieve an even lower perplexity of 37.5.
+
+All the data used for the experiments are available for free at https://github.com/Baghdat/LSTM-LM.
+
+<hr>
+
+### 3 Less programming-intensive use cases
+
+The project is oriented mostly on computer scientists / computational linguists who are interested in dependency parsing and would like to work with Kazakh language in this respect.
+However, we feel obliged to showcase a couple of less "computational" and more "linguistics" use cases.
+
+#### 3.1 Visualization
+
+
+<hr>
 
 ### References
 
