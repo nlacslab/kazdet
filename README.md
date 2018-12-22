@@ -250,8 +250,8 @@ All the data used for the experiments are available for free at https://github.c
 
 ### 3 Less programming-intensive use cases
 
-The project is oriented mostly on computer scientists / computational linguists who are interested in dependency parsing and would like to work with Kazakh language in this respect.
-However, we feel obliged to showcase a couple of less "computational" and more "linguistics" use cases.
+Addmittedly this document is oriented mostly on computer scientists / computational linguists who are interested in dependency parsing and would like to work with Kazakh language in this respect.
+To compensate, we feel obliged to showcase a couple of less "computational" and more "linguistics" use cases.
 
 #### 3.1 Visualization
 
@@ -267,6 +267,20 @@ We need to make sure that `UD 2.0` is checked as the `Model` and Kazakh UD treeb
 If we now hit the `Process input` button and select the `Show trees` tab, we get a nice visualization, where clicking on each node opens up a side panel with additional information:
 ![UDPipe visualization example: part 2](https://github.com/nlacslab/kazdet/blob/master/misc/udpipe_vis02.png)
 
+
+#### 3.2 Search and visualization
+
+What if we need to visualize trees that have certain properties, e.g. contain a certain relation, lemma, tag etc.
+To this end we can use a query language and search platform developed at Turku university and located at http://bionlp-www.utu.fi/dep_search/.
+
+Let us try to find sentences, where the word _қой_ is governed by any kind of relation.
+On a [landing page](http://bionlp-www.utu.fi/dep_search/) choose `Kazakh (UDv2.0)` from the top-left drop-down list and enter the query `қой < _` (any tree, where `қой` is governed by any relation) to the textbox to the right of that drop-down list.
+Now upon hitting `search` we should get two trees, with their parses visualized in a "flat-tree" format similar to that used in BRAT annotation tool (see seq. 2.1)
+![Query + visualization example](https://github.com/nlacslab/kazdet/blob/master/misc/turku_vis01.png)
+
+
+We need to make sure that `UD 2.0` is checked as the `Model` and Kazakh UD treebank is chosen from the drop-down list.
+`Actions` check boxes must all be deselected and `CoNNL-U` is chosen as an input under the `Advanced options` panel.
 
 <hr>
 
