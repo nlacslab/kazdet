@@ -127,7 +127,7 @@ Thus, to tokenize and tag an input file `in.txt` (we might need to create it bef
 7	тіленбей	тіле	VERB	VERB	vbVcRefx=True|vbNeg=True|vbType=Cvb	_	_	0	0
 8	.	.	PUNCT	PUNCT	_	_	_	0	0
 ```
-\* _the morphological processing tools (analyzer and parser) constitute re-implementation of our earlier work, see [1] for example._
+\* _the morphological processing tools (analyzer and parser) constitute re-implementation of our earlier work, see [\[2\]](#ref02) for example._
 
 The next step in the pipeline is that this tokenized and tagged sentence needs to be parsed.
 To this end we need to download maltparser, which is distributed as a java binary code and needs no compilation.
@@ -193,8 +193,9 @@ The machine t
 
 ### References
 
-<a name="ref01"></a> 1. Makazhanov, A., Sultangazina, A., Makhambetov, O. and Yessenbayev, Z., 2015. Syntactic annotation of Kazakh: Following the universal dependencies guidelines. A report. In proceedings of the 3rd International Conference on Turkic Languages Processing (TurkLang 2015), Kazan, Tatarstan (pp. 338-350).
+<a name="ref01"></a> \[1\] Makazhanov, A., Sultangazina, A., Makhambetov, O. and Yessenbayev, Z., 2015. Syntactic annotation of Kazakh: Following the universal dependencies guidelines. A report. In proceedings of the 3rd International Conference on Turkic Languages Processing (TurkLang 2015), Kazan, Tatarstan (pp. 338-350).
 
+<a name="ref02"></a> \[2\] O. Makhambetov, A. Makazhanov, I. Sabyrgaliyev, Zh. Yessenbayev. "Data-driven morphological analysis and disambiguation for Kazakh". InInternational Conference on Intelligent Text Processing and Computational Linguistics 2015, pp. 151-163.
 
 
 
