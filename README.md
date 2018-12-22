@@ -185,7 +185,7 @@ Loading UDPipe model: done.
 
 #### 2.4 Machine translation prototype
 
-We have experimented with both statistical and neural machine translation systems, as well as linguistically motivated factored and rule-based models. This involved considerable amount of work and has resulted in a 
+We have experimented with both statistical and neural machine translation systems, as well as linguistically motivated factored and rule-based models. This involved considerable amount of work and has resulted in a number of publications, e.g. [\[3\]](#ref02), [\[4\]](#ref02), and [\[5\]](#ref02).
 We have built a machine translation system prototype to translate 
 
 The machine t
@@ -197,8 +197,9 @@ The machine t
 
 <a name="ref02"></a> \[2\] O. Makhambetov, A. Makazhanov, I. Sabyrgaliyev, Zh. Yessenbayev. "Data-driven morphological analysis and disambiguation for Kazakh". InInternational Conference on Intelligent Text Processing and Computational Linguistics 2015, pp. 151-163.
 
+<a name="ref03">\[3\] Makazhanov, A., Myrzakhmetov, B., & Kozhirbayev, Z. (2017). On Various Approaches to Machine Translation from Russian to Kazakh.
 
+<a name="ref04">\[4\] Myrzakhmetov, B., Sultangazina, A., & Makazhanov, A. Identification of the parallel documents from multilingual news websites. In Application of Information and Communication Technologies (AICT), 2016 IEEE 10th International Conference on (pp. 1-5). IEEE.
 
-
- 
+<a name="ref05">\[5\] Assylbekov, Z., Myrzakhmetov, B., & Makazhanov, A. (2016). Experiments with Russian to Kazakh sentence alignment. The 4-th International Conference on Computer Processing of Turkic Languages “TurkLang 2016”.
 
