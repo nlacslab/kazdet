@@ -6,7 +6,6 @@ This repository hosts a [Kazakh](https://en.wikipedia.org/wiki/Kazakh_language) 
 As of December 2018, the treebank contains ~61K sentences and ~934.7K tokens (of those 894.3K alphanumeric).
 The treebank is annotated for lemma, part-of-speech, morphology, and dependency relations following the [Universal Dependency 2](http://universaldependencies.org/) guidelines and is stored in the UD-native
 [CoNLL-U format](http://universaldependencies.org/format.html). A sample parse in CoNLL-U may look like this:
-
 ```
 # text = Бір ай болады, Шолпан күнәға белін берік байлаған.
 1	Бір	бір	NUM	NUM	_	2	nummod	_	_
@@ -116,7 +115,7 @@ Thus, to tokenize and tag an input file `in.txt` (we might need to create it bef
 ~/kazdet/tools > python tagpipe.py -i in.txt -o in.toktag.txt -f 2
 ```
 ... and to check the output:
-```
+```shell
 ~/kazdet/tools >  cat in.toktag.txt 
 
 1	Еңбек	еңбек	NOUN	NOUN	_	_	_	0	0
@@ -138,7 +137,7 @@ Download the latest release of the maltparser from http://maltparser.org/dist/ma
 ~/kazdet/tools > unzip maltparser-1.9.2.zip
 ```
 Enter the maltparser directory and copy the `malt_kdt_001.mco`file from the `models` into this directory from the models directory:
-```
+```shell
 ~/kazdet/tools > cd maltparser-1.9.2/
 ~/kazdet/tools > cp ../../models/malt_kdt_001.mco .
 ```
@@ -222,7 +221,7 @@ Thus, to extract named entities from file `in.txt` (we may need to create one in
 ~/kazdet/tools > python nerpipe.py -i in.txt -o out.txt
 ```
 ... and to check the output:
-```
+```shell
 ~/kazdet/tools > cat out.txt 
 
 1	Ресей	LOC
