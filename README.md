@@ -255,6 +255,18 @@ However, we feel obliged to showcase a couple of less "computational" and more "
 
 #### 3.1 Visualization
 
+The CONNL-U format might be informative and good for machine processing, but it is hard to imagine a syntax tree of a sentence just by looking at those rows and columns of text specifications.
+
+The `UDPipe` project mentioned earlier in this document not only provides an effective parsing pipeline framework, but also a convenient visualization tool, which can be accessed through their website at http://lindat.mff.cuni.cz/services/udpipe/.
+
+Let us try to visualize the sample sentence from the very beginning of this dcument. To do that we need to copy-paste it into the input text area of the UDPipe service landing page:
+![UDPipe visualization example: part 1](https://github.com/nlacslab/kazdet/blob/master/misc/udpipe_vis01.png)
+We need to make sure that `UD 2.0` is checked as the `Model` and Kazakh UD treebank is chosen from the drop-down list.
+`Actions` check boxes must all be deselected and `CoNNL-U` is chosen as an input under the `Advanced options` panel.
+
+If we now hit the `Process input` button and select the `Show trees` tab, we get a nice visualization, where clicking on each node opens up a side panel with additional information:
+![UDPipe visualization example: part 2](https://github.com/nlacslab/kazdet/blob/master/misc/udpipe_vis02.png)
+
 
 <hr>
 
