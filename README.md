@@ -143,7 +143,7 @@ To parse our tokenized and tagged file `in.toktag.txt`, save the output to `out.
 and to view the output run the following commands:
 ```shell
 ~/kazdet/tools/maltparser-1.9.2 > java -jar maltparser-1.9.2.jar -c malt_kdt_001 -i ../in.toktag.txt -o ../out.tx -m parse
-~/kazdet/tools/maltparser-1.9.2 > cat -head../out.txt
+~/kazdet/tools/maltparser-1.9.2 > head ../out.txt
 1	Еңбек	еңбек	NOUN	NOUN	_	2	dobj	_	_
 2	етсең	ет	VERB	VERB	vbMood=Cond|Person=2	3	ccomp	_	_
 3	ерінбей	ерін	VERB	VERB	vbNeg=True|vbType=Cvb	7	advcl	_	_
@@ -153,6 +153,23 @@ and to view the output run the following commands:
 7	тіленбей	тіле	VERB	VERB	vbVcRefx=True|vbNeg=True|vbType=Cvb	0	root	_	_
 8	.	.	PUNCT	PUNCT	_	7	punct	_	_                                                             
 ```
+
+__=== 2017 ===__
+
+#### 2.3 Parsing pipeline v2
+
+This pipeline is basede on another third-party tool, [udpipe](http://ufal.mff.cuni.cz/udpipe), and covers two objectives of the 2017 implementation schedule, i.e. developing neural-based morphological tagger and parser.
+
+Let's start by downloading precompiled `udpipe` binaries from https://github.com/ufal/udpipe/releases/download/v1.2.0/udpipe-1.2.0-bin.zip.
+
+
+
+
+
+
+
+
+
 
 
 
