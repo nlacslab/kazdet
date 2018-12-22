@@ -74,7 +74,7 @@ To extract the treebank on a Linux system, `cd` to the data directory and extrac
 
 What follows is a chronologically orgonized (according to the project implementation schedule) list of usage examples (when applicable) of the tools developped for the project. To use provided Python scripts make sure that your Python version is 3.6 or higher. Currently all of the usage examples are made for Linux systems, Windows tutorial can be made upon request.
 
-__2016__
+__=== 2016 ===__
 
 #### 2.1 The annotation tool
 For this purpose a third-party tool [BRAT](http://brat.nlplab.org/) due to its support of multi-user and online annotation modes. 
@@ -107,14 +107,14 @@ optional arguments:
                         output format: 0 - plain (default); 1 - conllu; 2 -
                         conllx; [anything else] - plain.
 ```
-Thus, to tokenize and tag an input file `in.txt` (we might need to create it beforehand) and save it to the file `in.toktag.txt` in a conllx format (as it used by the maltparser), we need to run the following commands:
+Thus, to tokenize and tag an input file `in.txt` (we might need to create it beforehand) using the trigram HMM model (`model.mor` is set by default) and save it to the file `in.toktag.txt` in a conllx format (as it used by the maltparser), we need to run the following commands:
 ```shell
 ~/kazdet/tools > echo 'Еңбек етсең ерінбей, тояды қарның тіленбей.' > in.txt
 ~/kazdet/tools > python tagpipe.py -i in.txt -o in.toktag.txt -f 2
 ```
 ... and to check the output:
 ```
-cat in.toktag.txt 
+~/kazdet/tools >  cat in.toktag.txt 
 
 1	Еңбек	еңбек	NOUN	NOUN	_	_	_	0	0
 2	етсең	ет	VERB	VERB	vbMood=Cond|Person=2	_	_	0	0
@@ -126,28 +126,34 @@ cat in.toktag.txt
 8	.	.	PUNCT	PUNCT	_	_	_	0	0
 
 ```
+The next step in the pipeline is that this tokenized and tagged sentence needs to be parsed.
+To this end we need to download maltparser, which is distributed as a java binary code and needs no compilation.
 
-
-
-Thus to to tokenize
-
-To use this pipeline, first download the latest release of the maltparser from http://maltparser.org/dist/maltparser-1.9.2.zip
-and `unzip` (this instruction uses the tools directory of the repo, i.e. `kazdet/tools`, for conveniene):
+Download the latest release of the maltparser from http://maltparser.org/dist/maltparser-1.9.2.zip and `unzip` (this instruction uses the tools directory of the repo, i.e. `kazdet/tools`, for conveniene):
 ```shell
 ~/kazdet/tools > unzip maltparser-1.9.2.zip
 ```
-
-According to the initial project proposal, it was planned to develop an annotation tool and a basic dependency parsing pipeline consisting of a tokenizer, a tagger, and a parser.
-As funding was extended to co
-
-
-
-http://www.maltparser.org/download.html
-
-
+Enter the maltparser directory and copy the `malt_kdt_001.mco`file from the `models` into this directory from the models directory:
 ```
-java -jar maltparser-1.9.2.jar -c test -i examples/data/talbanken05_test.conll -o out.conll -m parse
+~/kazdet/tools > cd maltparser-1.9.2/
+~/kazdet/tools > cp ../../models/malt_kdt_001.mco .
 ```
+Now everything is set up for parsing.
+To parse our tokenized and tagged file `in.toktag.txt`, save the output to `out.txt`,
+and to view the output run the following commands:
+```shell
+~/kazdet/tools/maltparser-1.9.2 > java -jar maltparser-1.9.2.jar -c malt_kdt_001 -i ../in.toktag.txt -o ../out.tx -m parse
+~/kazdet/tools/maltparser-1.9.2 > cat -head../out.txt
+1	Еңбек	еңбек	NOUN	NOUN	_	2	dobj	_	_
+2	етсең	ет	VERB	VERB	vbMood=Cond|Person=2	3	ccomp	_	_
+3	ерінбей	ерін	VERB	VERB	vbNeg=True|vbType=Cvb	7	advcl	_	_
+4	,	,	PUNCT	PUNCT	_	7	punct	_	_
+5	тояды	то	VERB	VERB	vbTense=Aor|Person=3	6	acl-relcl	_	_
+6	қарның	қарн	NOUN	NOUN	Poss=2	7	nsubj	_	_
+7	тіленбей	тіле	VERB	VERB	vbVcRefx=True|vbNeg=True|vbType=Cvb	0	root	_	_
+8	.	.	PUNCT	PUNCT	_	7	punct	_	_                                                             
+```
+
 
 
  
