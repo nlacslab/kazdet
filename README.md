@@ -281,12 +281,12 @@ On a [landing page](http://bionlp-www.utu.fi/dep_search/) choose `Kazakh (UDv2.0
 Now upon hitting `search` we should get two trees, with their parses visualized in a "flat-tree" format similar to that used in BRAT annotation tool (see seq. 2.1):
 
 ![Query + visualization example: part 1](https://github.com/nlacslab/kazdet/blob/master/misc/turku_vis01.png)
+To submit other queries, take a look at the [specifications of the query language](http://bionlp.utu.fi/searchexpressions-new.html) used by the tool.
 
 If we look closer, there are two options at top-left corner of each tree: `context` and `connlu`.
 As the names suggest, the first one shows the sentence in context (if any), and the latter - produces already familiar CoNLL-U formatted text:
 
 ![Query + visualization example: part 2](https://github.com/nlacslab/kazdet/blob/master/misc/turku_vis02.png)
-\* Important thing to understand here is that the tool queries the UD Kazakh treebank (~10K tokens), but not the current treebank.
 
 <hr>
 
