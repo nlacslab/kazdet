@@ -3,7 +3,7 @@
 This repository hosts a [Kazakh](https://en.wikipedia.org/wiki/Kazakh_language) [Dependency Treebank](https://en.wikipedia.org/wiki/Treebank) built at the National Laboratory Astana, Nazarbayev University.
 
 
-As of December 2018, the treebank contains ~61K sentences and ~934.7K tokens (of those 894.3K alphanumeric).
+As of December 2018, the treebank contains ~61K sentences and ~934.7K tokens (of those 772.8K alphanumeric).
 The treebank is annotated for lemma, part-of-speech, morphology, and dependency relations following the [Universal Dependency 2](http://universaldependencies.org/) guidelines and is stored in the UD-native
 [CoNLL-U format](http://universaldependencies.org/format.html). A sample parse in CoNLL-U may look like this:
 ```
